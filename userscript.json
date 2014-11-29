@@ -7,7 +7,7 @@
     "include": ["^https?:\\/\\/www\\.google\\.[a-z]+\\/"],
     "exclude": ["^https?:\\/\\/www\\.google\\.co\\.uk\\/"],
     "runAt": "start",
-    "require": ["https://raw.githubusercontent.com/ded/domready/master/src/ready.js"],
+    "require": ["https://example.com/userscripts/dependencies/some-dependency.js"],
     "downloadUrls": ["http://example.com/userscripts/my-userscript.user.js"],
     "updateUrls": ["http://example.com/userscripts/my-userscript.user.js"],
     "grant": ["none"]

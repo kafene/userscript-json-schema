@@ -11,23 +11,23 @@
             "type": "object",
             "additionalProperties": true,
             "properties": {
-                "license": {
-                    "description": "A license for the script",
-                    "type": "string"
+                "authors": {
+                    "description": "A list of authors of the script",
+                    "type": "array"
                 },
                 "copyright": {
                     "description": "A copyright statement for the script",
                     "type": "string"
                 },
-                "authors": {
-                    "description": "A list of authors of the script",
-                    "type": "array"
+                "description": {
+                    "description": "A brief summary of what the script does",
+                    "type": "string"
+                },
+                "license": {
+                    "description": "A license for the script",
+                    "type": "string"
                 }
             }
-        }
-        "description": {
-            "description": "A brief summary of what the script does",
-            "type": "string"
         },
         "downloadURL": {
             "description": "The URL to download this script from",

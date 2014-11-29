@@ -1,0 +1,131 @@
+{
+    "id": "https://github.com/kafene/userscript-json-schema",
+    "$schema": "http://json-schema.org/schema#",
+    "title": "Userscript",
+    "description": "A JSON schema describing a userscript",
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["name"],
+    "properties": {
+        "meta": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+                "license": {
+                    "description": "A license for the script",
+                    "type": "string"
+                },
+                "copyright": {
+                    "description": "A copyright statement for the script",
+                    "type": "string"
+                },
+                "authors": {
+                    "description": "A list of authors of the script",
+                    "type": "array"
+                }
+            }
+        }
+        "description": {
+            "description": "A brief summary of what the script does",
+            "type": "string"
+        },
+        "downloadURL": {
+            "description": "The URL to download this script from",
+            "type": "string",
+            "pattern": "^https?:\\/\\/.+"
+        },
+        "exclude": {
+            "description": "A list of regular expressions, matched against page URLs, to determine whether the script will be excluded from those pages",
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "grant": {
+            "description": "Special API privileges to grant",
+            "default": ["none"],
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "none",
+                    "GM_info",
+                    "GM_deleteValue",
+                    "GM_getValue",
+                    "GM_listValues",
+                    "GM_setValue",
+                    "GM_getResourceText",
+                    "GM_getResourceURL",
+                    "GM_addStyle",
+                    "GM_log",
+                    "GM_openInTab",
+                    "GM_registerMenuCommand",
+                    "GM_setClipboard",
+                    "GM_xmlhttpRequest",
+                    "unsafeWindow"
+                ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "icon": {
+            "description": "The URL of an icon for the script",
+            "type": "string",
+            "pattern": "^(?:https?:\\/\\/|data:).+"
+        },
+        "include": {
+            "description": "A list of regular expressions, matched against page URLs, to determine whether the script will be included on those pages",
+            "type": "array",
+            "items": {"type": "string"},
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "name": {
+            "description": "The name of the script.",
+            "type": "string"
+        },
+        "namespace": {
+            "description": "A namespace identifier for the script",
+            "type": "string"
+        },
+        "noframes": {
+            "description": "Determines whether the script will run only in the top-level document",
+            "type": "boolean"
+        },
+        "require": {
+            "description": "A list of external script URLs which the script requires",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/.+"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "resource": {
+            "description": "A list of external resource URLs which the script may use",
+            "type": "array",
+            "items": {
+                "type": "string",
+                "pattern": "^https?:\\/\\/.+"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "runAt": {
+            "description": "Determines when the script is run",
+            "type": "string",
+            "enum": ["start", "ready", "end"]
+        },
+        "updateURL": {
+            "description": "The URL to download script updates from",
+            "type": "string",
+            "pattern": "^https?:\\/\\/.+"
+        },
+        "version": {
+            "description": "The version of the script, which must follow semver standards",
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        }
+    }
+}

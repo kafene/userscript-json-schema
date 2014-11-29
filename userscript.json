@@ -1,0 +1,14 @@
+{
+    "name": "My userscript",
+    "version": "0.0.1",
+    "description": "it does something",
+    "namespace": "http://example.com",
+    "copyright": "2014 My Company <http://example.com>",
+    "include": ["^https?:\\/\\/www\\.google\\.[a-z]+\\/"],
+    "exclude": ["^https?:\\/\\/www\\.google\\.co\\.uk\\/"],
+    "runAt": "start",
+    "require": ["https://raw.githubusercontent.com/ded/domready/master/src/ready.js"],
+    "downloadURL": "http://example.com/userscripts/my-userscript.user.js",
+    "updateURL": "http://example.com/userscripts/my-userscript.user.js",
+    "grant": ["none"]
+}

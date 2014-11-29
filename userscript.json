@@ -8,7 +8,7 @@
     "exclude": ["^https?:\\/\\/www\\.google\\.co\\.uk\\/"],
     "runAt": "start",
     "require": ["https://raw.githubusercontent.com/ded/domready/master/src/ready.js"],
-    "downloadURL": "http://example.com/userscripts/my-userscript.user.js",
-    "updateURL": "http://example.com/userscripts/my-userscript.user.js",
+    "downloadUrl": "http://example.com/userscripts/my-userscript.user.js",
+    "updateUrl": "http://example.com/userscripts/my-userscript.user.js",
     "grant": ["none"]
 }

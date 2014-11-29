@@ -29,10 +29,19 @@
                 }
             }
         },
-        "downloadURL": {
-            "description": "The URL to download this script from",
-            "type": "string",
-            "pattern": "^https?:\\/\\/.+"
+        "downloadUrls": {
+            "description": "A list of URLs from which the script can be downloaded",
+            "type": "array",
+            "items": {"type": "string", "pattern": "^https?:\\/\\/.+"},
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "updateUrls": {
+            "description": "A list of URLs from which updates can be downloaded",
+            "type": "array",
+            "items": {"type": "string", "pattern": "^https?:\\/\\/.+"},
+            "minItems": 1,
+            "uniqueItems": true
         },
         "exclude": {
             "description": "A list of regular expressions, matched against page URLs, to determine whether the script will be excluded from those pages",
@@ -116,11 +125,6 @@
             "description": "Determines when the script is run",
             "type": "string",
             "enum": ["start", "ready", "end"]
-        },
-        "updateURL": {
-            "description": "The URL to download script updates from",
-            "type": "string",
-            "pattern": "^https?:\\/\\/.+"
         },
         "version": {
             "description": "The version of the script, which must follow semver standards",

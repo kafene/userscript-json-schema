@@ -5,41 +5,60 @@
     "description": "A JSON schema describing a userscript",
     "type": "object",
     "additionalProperties": false,
-    "required": ["name"],
+    "required": ["name", "version"],
     "properties": {
-        "meta": {
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-                "authors": {
-                    "description": "A list of authors of the script",
-                    "type": "array"
-                },
-                "copyright": {
-                    "description": "A copyright statement for the script",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A brief summary of what the script does",
-                    "type": "string"
-                },
-                "license": {
-                    "description": "A license for the script",
-                    "type": "string"
-                }
-            }
+        "name": {
+            "description": "The name of the script.",
+            "type": "string"
+        },
+        "version": {
+            "description": "The version of the script, which must follow semver standards",
+            "type": "string",
+            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "description": {
+            "description": "A brief summary of what the script does",
+            "type": "string"
+        },
+        "namespace": {
+            "description": "A namespace identifier for the script",
+            "type": "string"
+        },
+        "copyright": {
+            "description": "A copyright statement for the script",
+            "type": "string"
+        },
+        "license": {
+            "description": "A license for the script",
+            "type": "string"
+        },
+        "authors": {
+            "description": "A list of authors of the script",
+            "type": "array"
         },
         "downloadUrls": {
-            "description": "A list of URLs from which the script can be downloaded",
+            "description": "A list of URLs from which the script(s) can be downloaded",
             "type": "array",
             "items": {"type": "string", "pattern": "^https?:\\/\\/.+"},
             "minItems": 1,
             "uniqueItems": true
         },
         "updateUrls": {
-            "description": "A list of URLs from which updates can be downloaded",
+            "description": "A list of URLs from which the JSON descriptor file can be downloaded",
             "type": "array",
             "items": {"type": "string", "pattern": "^https?:\\/\\/.+"},
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "icon": {
+            "description": "The URL of an icon for the script",
+            "type": "string",
+            "pattern": "^(?:https?:\\/\\/|data:).+"
+        },
+        "include": {
+            "description": "A list of regular expressions, matched against page URLs, to determine whether the script will be included on those pages",
+            "type": "array",
+            "items": {"type": "string"},
             "minItems": 1,
             "uniqueItems": true
         },
@@ -77,59 +96,28 @@
             "minItems": 1,
             "uniqueItems": true
         },
-        "icon": {
-            "description": "The URL of an icon for the script",
-            "type": "string",
-            "pattern": "^(?:https?:\\/\\/|data:).+"
-        },
-        "include": {
-            "description": "A list of regular expressions, matched against page URLs, to determine whether the script will be included on those pages",
-            "type": "array",
-            "items": {"type": "string"},
-            "minItems": 1,
-            "uniqueItems": true
-        },
-        "name": {
-            "description": "The name of the script.",
-            "type": "string"
-        },
-        "namespace": {
-            "description": "A namespace identifier for the script",
-            "type": "string"
-        },
-        "noframes": {
-            "description": "Determines whether the script will run only in the top-level document",
-            "type": "boolean"
-        },
         "require": {
             "description": "A list of external script URLs which the script requires",
             "type": "array",
-            "items": {
-                "type": "string",
-                "pattern": "^https?:\\/\\/.+"
-            },
+            "items": {"type": "string", "pattern": "^https?:\\/\\/.+"},
             "minItems": 1,
             "uniqueItems": true
         },
         "resource": {
             "description": "A list of external resource URLs which the script may use",
             "type": "array",
-            "items": {
-                "type": "string",
-                "pattern": "^https?:\\/\\/.+"
-            },
+            "items": {"type": "string", "pattern": "^https?:\\/\\/.+"},
             "minItems": 1,
             "uniqueItems": true
+        },
+        "noframes": {
+            "description": "Determines whether the script will run only in the top-level document",
+            "type": "boolean"
         },
         "runAt": {
             "description": "Determines when the script is run",
             "type": "string",
             "enum": ["start", "ready", "end"]
-        },
-        "version": {
-            "description": "The version of the script, which must follow semver standards",
-            "type": "string",
-            "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
         }
     }
 }
